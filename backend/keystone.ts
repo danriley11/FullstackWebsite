@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import { config, createSchema } from '@keystone-next/keystone/schema';
 import { User } from './schemas/User';
+import { Product } from './schemas/Product';
 import { createAuth } from '@keystone-next/auth';
 import { withItemData, statelessSessions } from '@keystone-next/keystone/session';
 
@@ -35,9 +36,10 @@ export default withAuth(
       url: databaseURL,
       // add data seeding here
     },
+    // Schemas here
     lists: createSchema({
-      // schema items here
       User,
+      Product,
     }),
     // Do we want people to have access to keystoneUI
     ui: {
