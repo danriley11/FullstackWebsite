@@ -5,6 +5,7 @@ import { Product } from './schemas/Product';
 import { ProductImage } from './schemas/ProductImage';
 import { createAuth } from '@keystone-next/auth';
 import { withItemData, statelessSessions } from '@keystone-next/keystone/session';
+import { insertSeedData } from './seed-data';
 
 const databaseURL = process.env.DATABASE_URL || 'mongodb://localhost/keystone-bespoke-designs';
 
@@ -35,7 +36,12 @@ export default withAuth(
     db: {
       adapter: 'mongoose',
       url: databaseURL,
-      // add data seeding here
+      async onConnect(keystone) {
+        console.log('Connected to the database!');
+        if (process.argv.includes('--seed-data')) {
+          await insertSeedData(keystone);
+        }
+      },
     },
     // Schemas here
     lists: createSchema({
