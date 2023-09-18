@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { darkCandy, darkCandySolid, lightCoral, lightCoralSolid } from '../styles/core/colours';
+import { darkCandySolid, lightCoral, lightCoralSolid } from '../styles/core/colours';
 
 export const ProductsList = styled.div`
   display: grid;
@@ -75,7 +75,7 @@ export const Title = styled.h3`
 
   a {
     border-radius: 24px;
-    background: ${darkCandy};
+    background: ${lightCoralSolid};
     display: inline;
     line-height: 1.3;
     font-size: 4rem;
