@@ -4,7 +4,7 @@ import NProgress from 'nprogress';
 import Router from 'next/router';
 import '../components/givenStyles/nprogress.css';
 import { ApolloProvider } from '@apollo/client';
-import withData from '../lib/withData';
+import withData from '../utils/withData';
 
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());

@@ -1,0 +1,9 @@
+{
+  "schema": "../backend/.keystone/schema.graphql",
+  "documents": ["./components/Product/Products.graphql.tsx"],
+  "generates": {
+    "path-to-output.ts": {
+      "plugins": ["typescript"]
+    }
+  }
+}
