@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Nav from './Nav';
 import styled from 'styled-components';
-import { lightCoralSolid } from './styles/colours';
+import { lightCoralSolid } from './styles/core/colours';
 
 const Logo = styled.h1`
   color: ${lightCoralSolid};
