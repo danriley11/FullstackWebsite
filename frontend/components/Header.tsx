@@ -2,20 +2,23 @@ import Link from 'next/link';
 import Nav from './Nav';
 import styled from 'styled-components';
 import { lightCoralSolid } from './styles/core/colours';
+import { Divider } from './styles/core/divider';
 
 const Logo = styled.h1`
   color: ${lightCoralSolid};
   font-size: 4rem;
   position: relative;
+  cursor: pointer;
 `;
 
 const HeaderStyles = styled.header`
   .bar {
-    border-bottom: 10px solid var(--black, black);
+    /* border-bottom: 10px solid var(--black, black); */
     display: grid;
     grid-template-columns: auto 1fr;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
+    margin: 0 2rem;
   }
 
   .sub-bar {
@@ -33,12 +36,12 @@ const Header = () => {
         <Link href="/">
           <Logo>Bespoke Designs by Sharon</Logo>
         </Link>
+        <Nav />
       </div>
+      <Divider />
       <div className="sub-bar">
         <p>Search</p>
       </div>
-
-      <Nav />
     </HeaderStyles>
   );
 };
