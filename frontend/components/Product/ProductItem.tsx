@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Product } from '../../path-to-output';
 import FormatMoney from '../../utils/formatMoney';
 import { Item, PriceTag, Title } from './Products.styles';
+import DeleteProduct from '../DeleteProduct/DeleteProduct';
 
 type ProductProps = {
   product: Product;
@@ -26,6 +27,10 @@ const ProductItem = ({ product }: ProductProps) => {
           }}>
           Edit ✏️
         </Link>
+
+        <DeleteProduct id={product.id} productName={product.name}>
+          Delete ❌
+        </DeleteProduct>
       </div>
     </Item>
   );
