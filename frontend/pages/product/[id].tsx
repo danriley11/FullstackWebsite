@@ -12,6 +12,7 @@ type SingleProductProps = {
 const SingleProductPage = ({ query }: SingleProductProps) => {
   const { data, loading, error } = useQuery(SINGLE_ITEM_QUERY, {
     variables: {
+      // TODO: Type correctly
       id: query.id,
     },
   });
@@ -23,10 +24,9 @@ const SingleProductPage = ({ query }: SingleProductProps) => {
   const { Product } = data;
 
   // Render product-specific content
-  console.log(Product);
   return (
     <ProductStyles>
-      {/* Utilise NextJS to update Tab text */}
+      {/* Utilise NextJS component to update Tab text */}
       <Head>
         <title>Bespoke designs | {Product.name}</title>
       </Head>
