@@ -4,6 +4,7 @@ import Form from '../styles/Form.styles';
 import { useMutation } from '@apollo/client';
 import { CREATE_PRODUCT_MUTATION } from './Sell.graphql';
 import DisplayError from '../ErrorMessage';
+import { ALL_PRODUCTS_QUERY } from '../Product/Products.graphql';
 
 const VendProduct = () => {
   const { inputs, handleChange, resetForm, clearForm } = useForm({
@@ -15,6 +16,8 @@ const VendProduct = () => {
 
   const [createProduct, { data, loading, error }] = useMutation(CREATE_PRODUCT_MUTATION, {
     variables: inputs,
+    // Whenever a new product is called, can refetch a query that uses affected data table
+    refetchQueries: [{ query: ALL_PRODUCTS_QUERY }],
   });
 
   return (
