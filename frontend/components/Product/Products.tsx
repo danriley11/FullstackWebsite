@@ -5,9 +5,8 @@ import ProductItem from './ProductItem';
 
 const Products = () => {
   const { data, error, loading } = useQuery(ALL_PRODUCTS_QUERY);
-  console.log(data, error, loading);
 
-  // Can replace below with loading or error components/visuals
+  // TODO: Replace below with loading and error styledComponents
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
