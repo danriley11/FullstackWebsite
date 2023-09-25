@@ -5,6 +5,7 @@ import { useMutation } from '@apollo/client';
 import { CREATE_PRODUCT_MUTATION } from './Sell.graphql';
 import DisplayError from '../ErrorMessage';
 import { ALL_PRODUCTS_QUERY } from '../Product/Products.graphql';
+import Router from 'next/router';
 
 const VendProduct = () => {
   const { inputs, handleChange, resetForm, clearForm } = useForm({
@@ -26,7 +27,16 @@ const VendProduct = () => {
         event.preventDefault();
 
         // Submit input fields to backend
-        await createProduct();
+        const res = await createProduct();
+
+        // Clear fields after submission
+        clearForm();
+
+        // Move user to new products page
+        // TODO: Make this a toggleable function via checkbox incase there's numerous items to be added in one session
+        Router.push({
+          pathname: `/product/${res.data.createProduct.id}`,
+        });
       }}>
       <DisplayError error={error} />
 
