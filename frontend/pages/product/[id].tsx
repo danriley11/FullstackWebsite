@@ -1,18 +1,15 @@
 // This filename convention is specific to Next.JS when rendering based on the url
 
 import { useQuery } from '@apollo/client';
-import SINGLE_ITEM_QUERY from '../../components/SingleItem/SingleItem.graphql';
+import SINGLE_ITEM_QUERY from '../../components/SingleProduct/SingleProduct.graphql';
 import DisplayError from '../../components/ErrorMessage';
 import Head from 'next/head';
-import { ProductStyles } from '../../components/SingleItem/SingleItem.styles';
+import { ProductStyles } from '../../components/SingleProduct/SingleProduct.styles';
+import { Query } from '../../utils/globalTypes';
 
-type SingleProductProps = {
-  query: string;
-};
-const SingleProductPage = ({ query }: SingleProductProps) => {
+const SingleProductPage = ({ query }: Query) => {
   const { data, loading, error } = useQuery(SINGLE_ITEM_QUERY, {
     variables: {
-      // TODO: Type correctly
       id: query.id,
     },
   });
