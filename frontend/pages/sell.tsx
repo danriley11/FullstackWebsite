@@ -1,7 +1,9 @@
+import VendProduct from '../components/Sell/Sell';
+
 export default function SellPage() {
   return (
     <div>
-      <p>Hello world!</p>
+      <VendProduct />
     </div>
   );
 }
