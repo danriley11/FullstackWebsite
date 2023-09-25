@@ -15,7 +15,18 @@ const ProductItem = ({ product }: ProductProps) => {
         <Link href={`/product/${product.id}`}>{product.name}</Link>
       </Title>
       <p>{product.description}</p>
-      {/* TODO: Add buttons to edit and delete item */}
+      {/* TODO: Add buttons to delete item */}
+      <div className="buttonList">
+        <Link
+          href={{
+            pathname: 'update',
+            query: {
+              id: product.id,
+            },
+          }}>
+          Edit ✏️
+        </Link>
+      </div>
     </Item>
   );
 };

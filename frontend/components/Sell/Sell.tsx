@@ -1,4 +1,3 @@
-import { Fragment, useState } from 'react';
 import useForm from '../../utils/useForm';
 import Form from '../styles/Form.styles';
 import { useMutation } from '@apollo/client';
@@ -56,6 +55,7 @@ const VendProduct = () => {
             id="name"
             name="name"
             placeholder="Product name"
+            // TODO: Type correctly
             value={inputs.name}
             onChange={handleChange}
           />
