@@ -67,7 +67,7 @@ export const PriceTag = styled.span`
 `;
 
 export const Title = styled.h3`
-  margin: 0 1rem;
+  /* margin: 0 1rem; */
   text-align: center;
   /* transform: skew(-5deg) rotate(-1deg); */
   margin-top: -3rem;
