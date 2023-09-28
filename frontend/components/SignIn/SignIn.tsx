@@ -5,7 +5,7 @@ import Form from '../styles/Form.styles';
 import { SIGNIN_MUTATION } from './SignIn.graphql';
 import { useMutation } from '@apollo/client';
 import DisplayError from '../ErrorMessage';
-import { useUser } from '../User/User';
+import useUser from '../../utils/useUser';
 import router from 'next/router';
 
 const SignIn = () => {
