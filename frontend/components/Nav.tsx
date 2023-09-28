@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import StyledNav from './styles/Nav.styles';
 import useUser from '../utils/useUser';
+import SignOut from './SignOut/SignOut';
 
 const Nav = () => {
   const user = useUser();
@@ -14,6 +15,7 @@ const Nav = () => {
           <Link href="/sell">Sell</Link>
           <Link href="/orders">Orders</Link>
           <Link href="/account">Account</Link>
+          <SignOut />
         </>
       )}
 
