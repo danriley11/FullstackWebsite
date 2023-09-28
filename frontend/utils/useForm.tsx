@@ -1,7 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Product } from '../path-to-output';
 
-const useForm = (initial: Product, isLoading: boolean) => {
+type SignIn = {
+  email: string;
+  password: string;
+};
+// TODO: Cleanup typing errors found on SignIn.tsx and UpdateProduct.tsx
+const useForm = (initial: Product | SignIn, isLoading: boolean) => {
   // create a state object for inputs
   const [inputs, setInputs] = useState(initial);
 

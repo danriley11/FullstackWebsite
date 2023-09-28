@@ -55,7 +55,6 @@ const VendProduct = () => {
             id="name"
             name="name"
             placeholder="Product name"
-            // TODO: Type correctly
             value={inputs.name}
             onChange={handleChange}
           />
