@@ -1,11 +1,10 @@
 import { useEffect } from 'react';
 import useForm from '../../utils/useForm';
-import { CURRENT_USER_QUERY } from '../User/User.graphql';
 import Form from '../styles/Form.styles';
 import { SIGNIN_MUTATION } from './SignIn.graphql';
 import { useMutation } from '@apollo/client';
 import DisplayError from '../ErrorMessage';
-import useUser from '../../utils/useUser';
+import useUser, { CURRENT_USER_QUERY } from '../../utils/useUser';
 import router from 'next/router';
 
 const SignIn = () => {
