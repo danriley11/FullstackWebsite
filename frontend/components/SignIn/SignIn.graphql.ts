@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
 export const SIGNIN_MUTATION = gql`
-  mutation signinMutation($email: String!, $password: String!) {
-    authenticateUserWithPassword(email: $email, password: $password) {
+  mutation signinMutation($signInEmail: String!, $signInPassword: String!) {
+    authenticateUserWithPassword(email: $signInEmail, password: $signInPassword) {
       ... on UserAuthenticationWithPasswordSuccess {
         item {
           id

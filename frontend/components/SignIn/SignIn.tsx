@@ -11,8 +11,8 @@ const SignIn = () => {
   const user = useUser();
   const { inputs, handleChange, resetForm } = useForm(
     {
-      email: '',
-      password: '',
+      signInEmail: '',
+      signInPassword: '',
     },
     false,
   );
@@ -35,6 +35,7 @@ const SignIn = () => {
       router.push({
         pathname: `/account`,
       });
+      console.log('Logging in...');
     }
   }, [user]);
 
@@ -45,29 +46,29 @@ const SignIn = () => {
       <DisplayError error={data?.authenticateUserWithPassword} />
 
       <fieldset>
-        <label htmlFor="email">
+        <label htmlFor="signInEmail">
           Email:{' '}
           <input
-            type="text"
-            id="email"
-            name="email"
+            type="email"
+            id="signInEmail"
+            name="signInEmail"
             placeholder="samson@thewise.com"
-            autoComplete="email"
-            value={inputs.email}
+            autoComplete="signInEmail"
+            value={inputs.signInEmail}
             onChange={handleChange}
           />
           <br />
         </label>
 
-        <label htmlFor="password">
+        <label htmlFor="signInPassword">
           Password:{' '}
           <input
             type="password"
-            id="password"
-            name="password"
+            id="signInPassword"
+            name="signInPassword"
             placeholder="********"
-            autoComplete="password"
-            value={inputs.password}
+            autoComplete="signInPassword"
+            value={inputs.signInPassword}
             onChange={handleChange}
           />
           <br />
