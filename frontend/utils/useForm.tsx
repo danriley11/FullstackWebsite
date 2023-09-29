@@ -2,11 +2,16 @@ import { useEffect, useState } from 'react';
 import { Product } from '../path-to-output';
 
 type SignIn = {
-  email: string;
-  password: string;
+  signInEmail: string;
+  signInPassword: string;
+};
+type SignUp = {
+  signUpName: string;
+  signUpEmail: string;
+  signUpPassword: string;
 };
 // TODO: Cleanup typing errors found on SignIn.tsx and UpdateProduct.tsx
-const useForm = (initial: Product | SignIn, isLoading: boolean) => {
+const useForm = (initial: Product | SignIn | SignUp, isLoading: boolean) => {
   // create a state object for inputs
   const [inputs, setInputs] = useState(initial);
 
