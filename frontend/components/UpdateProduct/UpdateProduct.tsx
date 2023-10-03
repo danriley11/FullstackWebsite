@@ -4,6 +4,7 @@ import { UPDATE_SINGLE_PRODUCT_MUTATION } from './UpdateProduct.graphql';
 import DisplayError from '../ErrorMessage';
 import Form from '../styles/Form.styles';
 import useForm from '../../utils/useForm';
+import { Product } from '../../path-to-output';
 
 const UpdateProduct = ({ id }) => {
   const { data: queryData, loading: queryLoading, error: queryError } = useQuery(
@@ -15,7 +16,7 @@ const UpdateProduct = ({ id }) => {
     },
   );
 
-  const { inputs, handleChange, resetForm, clearForm } = useForm(
+  const { inputs, handleChange, resetForm, clearForm } = useForm<Product>(
     queryData?.Product || {
       name: '',
       description: '',
