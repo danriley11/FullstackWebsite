@@ -1,17 +1,43 @@
 import { useEffect, useState } from 'react';
 import { Product } from '../path-to-output';
 
-type SignIn = {
+export type VendProductInputs = {
+  image: string;
+  name: string;
+  price: number;
+  description: string;
+};
+export type SignInInputs = {
   signInEmail: string;
   signInPassword: string;
 };
-type SignUp = {
+export type SignUpInputs = {
   signUpName: string;
   signUpEmail: string;
   signUpPassword: string;
 };
+export type RequestPasswordResetInputs = {
+  passwordResetEmail: string;
+};
+export type PasswordResetInputs = {
+  passwordResetEmail: string;
+  passwordResetPassword: string;
+  passwordResetToken: string;
+};
+
+type FormInputs =
+  | Product
+  | VendProductInputs
+  | SignInInputs
+  | SignUpInputs
+  | RequestPasswordResetInputs
+  | PasswordResetInputs;
+
 // TODO: Cleanup typing errors found on SignIn.tsx and UpdateProduct.tsx
-const useForm = (initial: Product | SignIn | SignUp, isLoading: boolean) => {
+const useForm = <InitialTypes extends FormInputs>(
+  initial: InitialTypes,
+  isLoading: boolean = false,
+) => {
   // create a state object for inputs
   const [inputs, setInputs] = useState(initial);
 
@@ -42,8 +68,7 @@ const useForm = (initial: Product | SignIn | SignUp, isLoading: boolean) => {
 
   const clearForm = () => {
     const blankState = Object.fromEntries(Object.entries(inputs).map(([key, value]) => [key, '']));
-    // TODO: correctly type
-    setInputs(blankState);
+    setInputs(blankState as InitialTypes);
   };
 
   return {

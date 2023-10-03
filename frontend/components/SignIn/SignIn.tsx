@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import useForm from '../../utils/useForm';
+import useForm, { SignInInputs } from '../../utils/useForm';
 import Form from '../styles/Form.styles';
 import { SIGNIN_MUTATION } from './SignIn.graphql';
 import { useMutation } from '@apollo/client';
@@ -9,7 +9,7 @@ import router from 'next/router';
 
 const SignIn = () => {
   const user = useUser();
-  const { inputs, handleChange, resetForm } = useForm(
+  const { inputs, handleChange, resetForm } = useForm<SignInInputs>(
     {
       signInEmail: '',
       signInPassword: '',

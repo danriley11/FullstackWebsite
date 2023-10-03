@@ -23,6 +23,13 @@ const { withAuth } = createAuth({
     fields: ['name', 'email', 'password'],
     // TODO: Add initial roles here -> will become admin
   },
+  passwordResetLink: {
+    async sendToken(args) {
+      // currently printing out token on server side
+      // if this were printed on browser, any user could have their password reset
+      console.log('args', args);
+    },
+  },
 });
 
 export default withAuth(

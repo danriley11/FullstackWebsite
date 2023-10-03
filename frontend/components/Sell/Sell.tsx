@@ -1,4 +1,4 @@
-import useForm from '../../utils/useForm';
+import useForm, { VendProductInputs } from '../../utils/useForm';
 import Form from '../styles/Form.styles';
 import { useMutation } from '@apollo/client';
 import { CREATE_PRODUCT_MUTATION } from './Sell.graphql';
@@ -7,7 +7,7 @@ import { ALL_PRODUCTS_QUERY } from '../Product/Products.graphql';
 import Router from 'next/router';
 
 const VendProduct = () => {
-  const { inputs, handleChange, resetForm, clearForm } = useForm({
+  const { inputs, handleChange, resetForm, clearForm } = useForm<VendProductInputs>({
     image: '',
     name: '',
     price: 0,
