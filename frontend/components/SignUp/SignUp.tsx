@@ -1,18 +1,15 @@
-import useForm from '../../utils/useForm';
+import useForm, { SignUpInputs } from '../../utils/useForm';
 import Form from '../styles/Form.styles';
 import { SIGNUP_MUTATION } from './SignUp.graphql';
 import { useMutation } from '@apollo/client';
 import DisplayError from '../ErrorMessage';
 
 const SignUp = () => {
-  const { inputs, handleChange, resetForm } = useForm(
-    {
-      signUpName: '',
-      signUpEmail: '',
-      signUpPassword: '',
-    },
-    false,
-  );
+  const { inputs, handleChange, resetForm } = useForm<SignUpInputs>({
+    signUpName: '',
+    signUpEmail: '',
+    signUpPassword: '',
+  });
 
   const [signup, { data, loading, error }] = useMutation(SIGNUP_MUTATION, {
     variables: inputs,
