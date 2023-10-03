@@ -1,11 +1,13 @@
 import 'dotenv/config';
 import { config, createSchema } from '@keystone-next/keystone/schema';
+import { createAuth } from '@keystone-next/auth';
+// eslint-disable-next-line prettier/prettier
+import { withItemData, statelessSessions } from '@keystone-next/keystone/session';
 import { User } from './schemas/User';
 import { Product } from './schemas/Product';
 import { ProductImage } from './schemas/ProductImage';
-import { createAuth } from '@keystone-next/auth';
-import { withItemData, statelessSessions } from '@keystone-next/keystone/session';
 import { insertSeedData } from './seed-data';
+import { sendPasswordResetEmail } from './lib/mail';
 
 const databaseURL = process.env.DATABASE_URL || 'mongodb://localhost/keystone-bespoke-designs';
 
@@ -26,8 +28,11 @@ const { withAuth } = createAuth({
   passwordResetLink: {
     async sendToken(args) {
       // currently printing out token on server side
+      // console.log('args', args);
       // if this were printed on browser, any user could have their password reset
-      console.log('args', args);
+
+      // send the email
+      await sendPasswordResetEmail(args.token, args.identity);
     },
   },
 });
@@ -58,7 +63,8 @@ export default withAuth(
     }),
     // Do we want people to have access to keystoneUI
     ui: {
-      //   Only show UI to those who pass this test:
+      // Only show UI to those who pass this test:
+      // Note: I want this to be 'unsafe' to determine test success
       isAccessAllowed: ({ session }) => !!session?.data,
     },
     session: withItemData(statelessSessions(sessionConfig), {
