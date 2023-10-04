@@ -1,7 +1,8 @@
 import calcTotalPrice from '../../utils/calcTotalPrice';
+import { useCart } from '../../utils/cartState';
 import formatMoney from '../../utils/formatMoney';
 import useUser from '../../utils/useUser';
-import CartStyles, { CartItemStyles } from '../styles/Cart.styles';
+import CartStyles, { CartItemStyles, CloseButton } from '../styles/Cart.styles';
 
 const CartItem = ({ cartItem }) => {
   const product = cartItem.product;
@@ -23,14 +24,16 @@ const CartItem = ({ cartItem }) => {
 
 const Cart = () => {
   const me = useUser();
+  const { cartOpen, closeCart } = useCart();
 
   if (!me) {
     return <p>No cart details currently available...</p>;
   }
   return (
-    <CartStyles open>
+    <CartStyles open={cartOpen}>
       <header>
         <div>{me.name}'s cart</div>
+        <CloseButton onClick={closeCart}>&times;</CloseButton>
       </header>
 
       <ul>
