@@ -19,7 +19,9 @@ const Pagination = ({ page }: PaginationProps) => {
   return (
     <PaginationStyles>
       <Head>
-        <title>Bespoke designs | Products &lsqb;{page}&rsqb;</title>
+        <title>
+          Bespoke designs | Products [{page}/{pageCount}]
+        </title>
       </Head>
 
       <Link href={`/products/${page - 1}`}>
