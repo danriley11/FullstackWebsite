@@ -66,4 +66,15 @@ export const CartItemStyles = styled.li`
   }
 `;
 
+export const CloseButton = styled.button`
+  background: black;
+  color: white;
+  font-size: 3rem;
+  border: 0;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: 0;
+`;
+
 export default CartStyles;
