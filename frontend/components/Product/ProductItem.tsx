@@ -29,6 +29,7 @@ const ProductItem = ({ product }: ProductProps) => {
           Edit ✏️
         </Link>
 
+        {/* TODO: Inside account settings, add toggle for auto-popout of cart after successfully adding new product */}
         <AddToCart id={product.id} />
 
         <DeleteProduct id={product.id} productName={product.name}>
