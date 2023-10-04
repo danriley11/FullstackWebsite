@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { darkCandySolid } from './core/colours';
 
 const CartStyles = styled.div`
   padding: 20px;
@@ -75,6 +76,51 @@ export const CloseButton = styled.button`
   z-index: 2;
   top: 0;
   right: 0;
+`;
+
+export const Badge = styled.div`
+  background: ${darkCandySolid};
+  color: white;
+  border-radius: 50%;
+  padding: 0.5rem;
+  line-height: 2rem;
+  min-width: 3rem;
+  margin-left: 1rem;
+
+  /* To prevent the circle and value reshaping */
+  font-feature-settings: 'tnum';
+  font-variant-numeric: tabular-nums;
+`;
+
+export const AnimationStyles = styled.span`
+  position: relative;
+
+  .count {
+    display: block;
+    position: relative;
+    transition: transform 0.4s;
+    backface-visibility: hidden;
+  }
+
+  .count-enter {
+    transform: scale(4) rotateX(0.5turn);
+  }
+
+  .count-enter-active {
+    transform: rotateX(0);
+    background: green;
+  }
+
+  .count-exit {
+    top: 0;
+    position: absolute;
+    transform: rotateX(0);
+  }
+
+  .count-exit-active {
+    background: pink;
+    transform: scale(4) rotateX(0.5turn);
+  }
 `;
 
 export default CartStyles;
