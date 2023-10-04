@@ -3,6 +3,7 @@ import { Product } from '../../path-to-output';
 import FormatMoney from '../../utils/formatMoney';
 import { Item, PriceTag, Title } from './Products.styles';
 import DeleteProduct from '../DeleteProduct/DeleteProduct';
+import AddToCart from '../Cart/AddToCart';
 
 type ProductProps = {
   product: Product;
@@ -27,6 +28,8 @@ const ProductItem = ({ product }: ProductProps) => {
           }}>
           Edit ✏️
         </Link>
+
+        <AddToCart id={product.id} />
 
         <DeleteProduct id={product.id} productName={product.name}>
           Delete ❌
