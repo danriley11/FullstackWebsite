@@ -3,8 +3,9 @@ import { useCart } from '../../utils/cartState';
 import formatMoney from '../../utils/formatMoney';
 import useUser from '../../utils/useUser';
 import CartStyles, { CartItemStyles, CloseButton } from '../styles/Cart.styles';
+import RemoveFromCart from './RemoveFromCart';
 
-const CartItem = ({ cartItem }) => {
+const CartItem = ({ cartItem, allCartItems }) => {
   const product = cartItem.product;
 
   if (!product) return null;
@@ -18,6 +19,7 @@ const CartItem = ({ cartItem }) => {
           {cartItem.quantity} &times; {formatMoney(product.price)}
         </em>
       </div>
+      <RemoveFromCart cartItem={cartItem} allCartItems={allCartItems} />
     </CartItemStyles>
   );
 };
@@ -38,7 +40,7 @@ const Cart = () => {
 
       <ul>
         {me.cart.map((cartItem) => (
-          <CartItem key={cartItem.id} cartItem={cartItem} />
+          <CartItem key={cartItem.id} cartItem={cartItem} allCartItems={me.cart} />
         ))}
       </ul>
 
