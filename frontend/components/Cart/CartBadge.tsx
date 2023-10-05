@@ -1,4 +1,4 @@
-import { AnimationStyles, Badge } from '../styles/Cart.styles';
+import { AnimationStyles, Badge } from './Cart.styles';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 const CartBadge = ({ count }) => {
