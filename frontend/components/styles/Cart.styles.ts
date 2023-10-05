@@ -48,6 +48,17 @@ const CartStyles = styled.div`
     list-style: none;
     overflow: scroll;
   }
+
+  button {
+    &:hover {
+      cursor: pointer;
+      color: red;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
 `;
 
 export const CartItemStyles = styled.li`
