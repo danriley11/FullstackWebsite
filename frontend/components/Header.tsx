@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { lightCoralSolid } from './styles/core/colours';
 import { Divider } from './styles/core/divider';
 import Cart from './Cart/Cart';
+import Searchbar from './Searchbar/Searchbar';
 
 const Logo = styled.h1`
   color: ${lightCoralSolid};
@@ -41,7 +42,7 @@ const Header = () => {
       </div>
       <Divider />
       <div className="sub-bar">
-        <p>Search</p>
+        <Searchbar />
       </div>
 
       <Cart />

@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import Page from '../components/Page';
 import NProgress from 'nprogress';
 import Router from 'next/router';
-import '../components/givenStyles/nprogress.css';
+import '../components/styles/givenStyles/nprogress.css';
 import { ApolloProvider } from '@apollo/client';
 import withData from '../utils/withData';
 import { CartStateProvider } from '../utils/cartState';

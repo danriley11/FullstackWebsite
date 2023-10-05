@@ -2,7 +2,7 @@ import calcTotalPrice from '../../utils/calcTotalPrice';
 import { useCart } from '../../utils/cartState';
 import formatMoney from '../../utils/formatMoney';
 import useUser from '../../utils/useUser';
-import CartStyles, { CartItemStyles, CloseButton } from '../styles/Cart.styles';
+import CartStyles, { CartItemStyles, CloseButton } from './Cart.styles';
 import RemoveFromCart from './RemoveFromCart';
 
 const CartItem = ({ cartItem, allCartItems }) => {
