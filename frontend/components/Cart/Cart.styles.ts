@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { darkCandySolid } from './core/colours';
+import { darkCandySolid } from '../styles/core/colours';
 
 const CartStyles = styled.div`
   padding: 20px;
