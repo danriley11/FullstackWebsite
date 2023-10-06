@@ -21,7 +21,9 @@ const Nav = () => {
           <SignOut />
           <button type="button" onClick={openCart}>
             Cart 🛒
-            <CartBadge count={user.cart.reduce((sumtotal, cartItem) => sumtotal + cartItem.quantity, 0)} />
+            <CartBadge
+              count={user.cart.reduce((sumtotal, cartItem) => sumtotal + (cartItem.product ? cartItem.quantity : 0), 0)}
+            />
           </button>
         </>
       )}
