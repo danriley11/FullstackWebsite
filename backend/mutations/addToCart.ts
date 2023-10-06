@@ -20,7 +20,7 @@ const addToCart = async (
   // Query users cart
   const allCartItems = await context.lists.CartItem.findMany({
     where: { user: { id: session.itemId }, product: { id: productId } },
-    resolveFields: 'id,quantity',
+    resolveFields: 'id, quantity',
   });
 
   const [existingCartItem] = allCartItems;
@@ -29,7 +29,6 @@ const addToCart = async (
     console.log(`There are already ${existingCartItem.quantity}, adding another!`);
 
     // Check if current item already exists in cart
-    // If(true) { quantity++ }
     return await context.lists.CartItem.updateOne({
       id: existingCartItem.id,
       data: { quantity: existingCartItem.quantity + 1 },
