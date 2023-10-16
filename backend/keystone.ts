@@ -12,6 +12,8 @@ import { sendPasswordResetEmail } from './lib/mail';
 import { extendGraphqlSchema } from './mutations';
 import { OrderItem } from './schemas/OrderItem';
 import { Order } from './schemas/Order';
+import Role from './schemas/Role';
+import { permissionsList } from './schemas/fields';
 
 const databaseURL = process.env.DATABASE_URL || 'mongodb://localhost/keystone-bespoke-designs';
 
@@ -67,6 +69,7 @@ export default withAuth(
       CartItem,
       OrderItem,
       Order,
+      Role,
     }),
     extendGraphqlSchema,
     // Do we want people to have access to keystoneUI
@@ -76,7 +79,7 @@ export default withAuth(
       isAccessAllowed: ({ session }) => !!session?.data,
     },
     session: withItemData(statelessSessions(sessionConfig), {
-      User: 'id',
+      User: `id name email role { ${permissionsList.join(' ')} }`,
     }),
   }),
 );
