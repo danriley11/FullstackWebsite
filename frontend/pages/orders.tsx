@@ -5,9 +5,15 @@ import { ALL_USERS_ORDERS_QUERY } from './order/order.graphql';
 import { OrderItemStyles, OrderUl } from './order/order.styles';
 import Link from 'next/link';
 import FormatMoney from '../utils/formatMoney';
+import useUser from '../utils/useUser';
 
 const OrdersPage = () => {
-  const { data, loading, error } = useQuery(ALL_USERS_ORDERS_QUERY);
+  const user = useUser();
+  const { data, loading, error } = useQuery(ALL_USERS_ORDERS_QUERY, {
+    variables: {
+      id: user?.id,
+    },
+  });
   const allOrders = data?.allOrders;
 
   const countItemsInAnOrder = (order) => {

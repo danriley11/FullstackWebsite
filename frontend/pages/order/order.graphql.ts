@@ -26,8 +26,8 @@ export const SINGLE_ORDER_QUERY = gql`
 `;
 
 export const ALL_USERS_ORDERS_QUERY = gql`
-  query allUsersOrdersQuery {
-    allOrders {
+  query allUsersOrdersQuery($id: ID!) {
+    allOrders(where: { user: { id: $id } }) {
       id
       charge
       total
