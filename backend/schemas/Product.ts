@@ -4,7 +4,7 @@ import { rules } from '../access';
 
 export const Product = list({
   access: {
-    create: rules.canManageProductsRule,
+    create: rules.canCreateProductsRule,
     read: () => true, // TODO: Hide objects if status: 'DRAFT' | 'UNAVAILABLE'
     // eslint-disable-next-line @typescript-eslint/unbound-method
     update: rules.canManageProductsRule,
