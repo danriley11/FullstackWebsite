@@ -22,23 +22,43 @@ export const permissions = {
 
 // Returns a boolean or a filter which limits which products they may CRUD.
 export const rules = {
-  // eslint-disable-next-line prettier/prettier
-  canManageProductsRule: ({ session }: ListAccessArgs): boolean => /* | { user: { id: string } } */ {
-    // Does the user have permission of canManageProducts
+  canCreateProductsRule: ({ session }: ListAccessArgs): boolean => /* | { user: { id: string } } */ {
+    // Does the user have permission to manage products
     if (permissions.canManageProducts({ session })) {
       return true;
     }
   },
-  // If not, does the user own this item?
-  // return { user: { id: session.itemId } };
-  canOrderRule: ({ session }: ListAccessArgs): boolean => {
+  canManageProductsRule({ session }: ListAccessArgs) {
+    if (!isSignedIn({ session })) {
+      return false;
+    }
+    // Does the user have permission to manage products
+    if (permissions.canManageProducts({ session })) {
+      return true;
+    }
+    // IF INCLUDING PRODUCT OWNERSHIP:
+    // If not, do they own this item? (Product ownership)
+    // return { user: { id: session.itemId } };
+  },
+
+  canOrderRule({ session }: ListAccessArgs) {
+    if (!isSignedIn({ session })) {
+      return false;
+    }
     if (permissions.canManageCart({ session })) {
       return true;
     }
+    // REQUIRES EXTRA RETURN
+    return { user: { id: session.itemId } };
   },
-  // canManageOrderItems: ({ session }: ListAccessArgs): boolean => {
-  //   if (permissions.canManageCart({ session })) {
-  //     return true;
-  //   }
-  // },
+  canManageOrderItemsRule({ session }: ListAccessArgs) {
+    if (!isSignedIn({ session })) {
+      return false;
+    }
+    if (permissions.canManageCart({ session })) {
+      return true;
+    }
+    // REQUIRES EXTRA RETURN
+    return { user: { id: session.itemId } };
+  },
 };
