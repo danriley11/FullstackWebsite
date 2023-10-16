@@ -1,15 +1,19 @@
 import { text, select, integer, relationship } from '@keystone-next/fields';
 import { list } from '@keystone-next/keystone/schema';
-import { rules } from '../access';
+import { permissions, rules } from '../access';
 
 export const Product = list({
   access: {
     create: rules.canCreateProductsRule,
-    read: () => true, // TODO: Hide objects if status: 'DRAFT' | 'UNAVAILABLE'
+    read: () => true,
     // eslint-disable-next-line @typescript-eslint/unbound-method
     update: rules.canManageProductsRule,
     // eslint-disable-next-line @typescript-eslint/unbound-method
     delete: rules.canManageProductsRule,
+  },
+  ui: {
+    hideCreate: (args) => !permissions.canManageProducts(args),
+    hideDelete: (args) => !permissions.canManageProducts(args),
   },
   fields: {
     name: text({ isRequired: true }),
