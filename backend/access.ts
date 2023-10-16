@@ -61,4 +61,14 @@ export const rules = {
     // REQUIRES EXTRA RETURN
     return { user: { id: session.itemId } };
   },
+  canManageUsersRule({ session }: ListAccessArgs) {
+    if (!isSignedIn({ session })) {
+      return false;
+    }
+    if (permissions.canManageUsers({ session })) {
+      return true;
+    }
+    // REQUIRES EXTRA RETURN
+    return { id: session.itemId };
+  },
 };
