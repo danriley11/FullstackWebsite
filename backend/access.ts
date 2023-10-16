@@ -28,6 +28,7 @@ export const rules = {
       return true;
     }
   },
+
   canManageProductsRule({ session }: ListAccessArgs) {
     if (!isSignedIn({ session })) {
       return false;
@@ -51,6 +52,7 @@ export const rules = {
     // REQUIRES EXTRA RETURN
     return { user: { id: session.itemId } };
   },
+
   canManageOrderItemsRule({ session }: ListAccessArgs) {
     if (!isSignedIn({ session })) {
       return false;
@@ -61,6 +63,7 @@ export const rules = {
     // REQUIRES EXTRA RETURN
     return { user: { id: session.itemId } };
   },
+
   canManageUsersRule({ session }: ListAccessArgs) {
     if (!isSignedIn({ session })) {
       return false;
