@@ -1,8 +1,15 @@
 import { text, integer, relationship, virtual } from '@keystone-next/fields';
 import { list } from '@keystone-next/keystone/schema';
 import formatMoney from '../lib/formatMoney';
+import { isSignedIn, rules } from '../access';
 
 export const Order = list({
+  access: {
+    create: isSignedIn,
+    read: rules.canOrderRule,
+    update: () => false,
+    delete: () => false,
+  },
   fields: {
     // Creating custom fieldname
     orderTotal: virtual({
