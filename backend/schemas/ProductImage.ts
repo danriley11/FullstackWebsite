@@ -30,6 +30,8 @@ export const ProductImage = list({
     product: relationship({ ref: 'Product.photo' }),
   },
   ui: {
+    hideCreate: (args) => !permissions.canManageProducts(args),
+    hideDelete: (args) => !permissions.canManageProducts(args),
     listView: {
       initialColumns: ['image', 'altText', 'product'],
     },
