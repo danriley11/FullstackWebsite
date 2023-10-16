@@ -1,7 +1,16 @@
 import { text, select, integer, relationship } from '@keystone-next/fields';
 import { list } from '@keystone-next/keystone/schema';
+import { rules } from '../access';
 
 export const Product = list({
+  access: {
+    create: rules.canManageProductsRule,
+    read: () => true, // TODO: Hide objects if status: 'DRAFT' | 'UNAVAILABLE'
+    // eslint-disable-next-line @typescript-eslint/unbound-method
+    update: rules.canManageProductsRule,
+    // eslint-disable-next-line @typescript-eslint/unbound-method
+    delete: rules.canManageProductsRule,
+  },
   fields: {
     name: text({ isRequired: true }),
     description: text({
@@ -31,6 +40,12 @@ export const Product = list({
       },
     }),
     price: integer(),
-    // TODO: Photo
+    user: relationship({
+      ref: 'User.products',
+      label: 'Product owner',
+      defaultValue: ({ context }) => ({
+        connect: { id: context.session.itemId },
+      }),
+    }),
   },
 });
