@@ -1,15 +1,7 @@
-import { useRouter } from 'next/router';
-import useUser from '../utils/useUser';
+import { IsLoggedOut } from '../utils/isLoggedOut';
 
 export default function AccountPage() {
-  const router = useRouter();
-  const me = useUser();
-
-  if (!me) {
-    router.push({
-      pathname: '/signin',
-    });
-  }
+  IsLoggedOut();
 
   return (
     <div>

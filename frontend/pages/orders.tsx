@@ -6,6 +6,9 @@ import { OrderItemStyles, OrderUl } from './order/order.styles';
 import Link from 'next/link';
 import FormatMoney from '../utils/formatMoney';
 import useUser from '../utils/useUser';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { IsLoggedOut } from '../utils/isLoggedOut';
 
 const OrdersPage = () => {
   const user = useUser();
@@ -22,8 +25,9 @@ const OrdersPage = () => {
     return order.items.reduce((sumTotal, item) => sumTotal + item.quantity, 0);
   };
 
+  IsLoggedOut();
   if (loading) return <h3>Loading...</h3>;
-  //   whats the difference?
+  //   TODO: what's the difference between DisplayError & ErrorMessage?
   if (error) return <DisplayError error={error} />;
   //   for permissions
   if (error) return <ErrorMessage error={error} />;

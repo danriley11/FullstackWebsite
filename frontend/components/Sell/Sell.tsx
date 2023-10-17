@@ -4,7 +4,9 @@ import { useMutation } from '@apollo/client';
 import { CREATE_PRODUCT_MUTATION } from './Sell.graphql';
 import DisplayError from '../ErrorMessage';
 import { ALL_PRODUCTS_QUERY } from '../Product/Products.graphql';
-import Router from 'next/router';
+import Router, { useRouter } from 'next/router';
+import useUser from '../../utils/useUser';
+import { IsLoggedOut } from '../../utils/isLoggedOut';
 
 const VendProduct = () => {
   const { inputs, handleChange, resetForm, clearForm } = useForm<VendProductInputs>({
@@ -19,6 +21,8 @@ const VendProduct = () => {
     // Whenever a new product is called, can refetch a query that uses affected data table
     refetchQueries: [{ query: ALL_PRODUCTS_QUERY }],
   });
+
+  IsLoggedOut();
 
   return (
     <Form
@@ -50,14 +54,7 @@ const VendProduct = () => {
 
         <label htmlFor="name">
           Name:{' '}
-          <input
-            type="text"
-            id="name"
-            name="name"
-            placeholder="Product name"
-            value={inputs.name}
-            onChange={handleChange}
-          />
+          <input type="text" id="name" name="name" placeholder="Product name" value={inputs.name} onChange={handleChange} />
           <br />
         </label>
 
