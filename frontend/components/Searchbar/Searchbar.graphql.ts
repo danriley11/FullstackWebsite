@@ -4,14 +4,7 @@ import gql from 'graphql-tag';
 // searchTerms will be the named object holding the return of the query
 export const SEARCH_PRODUCTS_QUERY = gql`
   query searchProductsQuery($searchTerm: String!) {
-    searchTerms: allProducts(
-      where: {
-        OR: [
-          { name_contains_i: $searchTerm }
-          # , { description_contains_i: $searchTerm }
-        ]
-      }
-    ) {
+    searchTerms: allProducts(where: { AND: [{ name_contains_i: $searchTerm }, { status: "AVAILABLE" }] }) {
       id
       name
       photo {
