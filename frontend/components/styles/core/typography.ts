@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { rem } from './sizing';
 import { darkCandySolid } from './colours';
 
-export const fontFamily = `'League Spartan', arial, helvetica, sans-serif;`;
+export const fontFamily = `'Amiri', arial, helvetica, sans-serif;`;
 
 export const fontWeightRegular = 400;
 export const fontWeightMedium = 500;
@@ -44,7 +44,7 @@ export const Heading1 = styled.h1`
 `;
 
 export const Heading2 = styled.h2`
-  font-size: ${fontSize24};
+  font-size: ${fontSize28};
   font-weight: ${weights.semiBold};
   line-height: ${fontSize24LineHeight};
   font-family: ${fontFamily};
@@ -52,7 +52,7 @@ export const Heading2 = styled.h2`
 `;
 
 export const Heading3 = styled.h3`
-  font-size: ${fontSize20};
+  font-size: ${fontSize24};
   font-weight: ${weights.semiBold};
   line-height: ${fontSize24LineHeight};
   font-family: ${fontFamily};
@@ -61,7 +61,7 @@ export const Heading3 = styled.h3`
 `;
 
 export const Heading4 = styled.h4`
-  font-size: ${fontSize16};
+  font-size: ${fontSize20};
   font-weight: ${weights.semiBold};
   line-height: ${fontSize24LineHeight};
   font-family: ${fontFamily};
@@ -70,7 +70,7 @@ export const Heading4 = styled.h4`
 `;
 
 export const P = styled.p`
-  font-size: ${fontSize16};
+  font-size: ${fontSize20};
   font-family: ${fontFamily};
   font-weight: ${weights.regular};
   line-height: ${fontSize24};
