@@ -5,6 +5,8 @@ import ErrorMessage from '../../components/ErrorMessage';
 import OrderStyles from './order.styles';
 import FormatMoney from '../../utils/formatMoney';
 import { Query } from '../../utils/globalTypes';
+import useUser from '../../utils/useUser';
+import { IsLoggedOut } from '../../utils/isLoggedOut';
 
 const SingleOrderPage = ({ query }: Query) => {
   const { data, loading, error } = useQuery(SINGLE_ORDER_QUERY, {
@@ -14,6 +16,7 @@ const SingleOrderPage = ({ query }: Query) => {
   });
   const order = data?.order;
 
+  IsLoggedOut();
   if (loading) return <h3>Loading...</h3>;
   //   whats the difference?
   if (error) return <DisplayError error={error} />;

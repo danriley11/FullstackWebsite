@@ -1,13 +1,18 @@
 import Link from 'next/link';
 import StyledNav from './styles/Nav.styles';
-import useUser from '../utils/useUser';
+import useUser, { CURRENT_USER_QUERY } from '../utils/useUser';
 import SignOut from './SignOut/SignOut';
 import { useCart } from '../utils/cartState';
 import CartBadge from './Cart/CartBadge';
+import { useQuery } from '@apollo/client';
 
 const Nav = () => {
   const user = useUser();
   const { openCart } = useCart();
+  const { data } = useQuery(CURRENT_USER_QUERY);
+
+  // TODO: Enhance this to check .env key instead of undefined
+  const isAdmin = data?.authenticatedItem?.role?.id !== undefined;
 
   return (
     <StyledNav>
@@ -15,7 +20,7 @@ const Nav = () => {
 
       {user && (
         <>
-          <Link href="/sell">Sell</Link>
+          {isAdmin && <Link href="/sell">Sell</Link>}
           <Link href="/orders">Orders</Link>
           <Link href="/account">Account</Link>
           <SignOut />

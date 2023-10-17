@@ -12,7 +12,7 @@ const CartItem = ({ cartItem, allCartItems }) => {
   if (!product) return null;
   return (
     <CartItemStyles>
-      <img src={product.photo.image.publicUrlTransformed} alt={product.name} />
+      <img src={product?.photo?.image?.publicUrlTransformed} alt={product.name} />
       <div>
         <h3>{product.name}</h3>
         <p>{formatMoney(product.price * cartItem.quantity)}</p>
@@ -30,7 +30,7 @@ const Cart = () => {
   const { cartOpen, closeCart } = useCart();
 
   if (!me) {
-    return <p>No cart details currently available...</p>;
+    return null;
   }
   return (
     <CartStyles open={cartOpen}>

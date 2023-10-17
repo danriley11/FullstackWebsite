@@ -7,14 +7,11 @@ import useForm from '../../utils/useForm';
 import { Product } from '../../path-to-output';
 
 const UpdateProduct = ({ id }) => {
-  const { data: queryData, loading: queryLoading, error: queryError } = useQuery(
-    SINGLE_ITEM_QUERY,
-    {
-      variables: {
-        id,
-      },
+  const { data: queryData, loading: queryLoading, error: queryError } = useQuery(SINGLE_ITEM_QUERY, {
+    variables: {
+      id,
     },
-  );
+  });
 
   const { inputs, handleChange, resetForm, clearForm } = useForm<Product>(
     queryData?.Product || {
@@ -25,20 +22,20 @@ const UpdateProduct = ({ id }) => {
     queryLoading,
   );
 
-  const [
-    updateProduct,
-    { data: updateData, loading: updateLoading, error: updateError },
-  ] = useMutation(UPDATE_SINGLE_PRODUCT_MUTATION, {
-    variables: {
-      id,
-      name: inputs.name,
-      description: inputs.description,
-      price: inputs.price,
+  const [updateProduct, { data: updateData, loading: updateLoading, error: updateError }] = useMutation(
+    UPDATE_SINGLE_PRODUCT_MUTATION,
+    {
+      variables: {
+        id,
+        name: inputs.name,
+        description: inputs.description,
+        price: inputs.price,
+      },
+      onError(error) {
+        console.log(error);
+      },
     },
-    onError(error) {
-      console.log(error);
-    },
-  });
+  );
 
   if (queryLoading) return <p>Loading...</p>;
 
@@ -56,15 +53,7 @@ const UpdateProduct = ({ id }) => {
 
         <label htmlFor="name">
           Name:{' '}
-          <input
-            type="text"
-            id="name"
-            name="name"
-            placeholder="Product name"
-            // TODO: Type correctly
-            value={inputs.name}
-            onChange={handleChange}
-          />
+          <input type="text" id="name" name="name" placeholder="Product name" value={inputs.name} onChange={handleChange} />
           <br />
         </label>
 

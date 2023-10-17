@@ -21,7 +21,6 @@ const SignIn = () => {
     variables: inputs,
     refetchQueries: [{ query: CURRENT_USER_QUERY }],
   });
-  console.log('signin data', data);
 
   async function handleSubmit(event) {
     event.preventDefault();
