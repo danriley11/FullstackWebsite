@@ -17,7 +17,6 @@ const ProductItem = ({ product }: ProductProps) => {
         <Link href={`/product/${product.id}`}>{product.name}</Link>
       </Title>
       <p>{product.description}</p>
-      {/* TODO: Resolve console warning */}
       <div className="buttonList">
         <Link
           href={{

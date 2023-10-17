@@ -9,11 +9,13 @@ import useUser from '../utils/useUser';
 
 const OrdersPage = () => {
   const user = useUser();
+
   const { data, loading, error } = useQuery(ALL_USERS_ORDERS_QUERY, {
     variables: {
       id: user?.id,
     },
   });
+
   const allOrders = data?.allOrders;
 
   const countItemsInAnOrder = (order) => {
@@ -30,7 +32,7 @@ const OrdersPage = () => {
       <h2>You have {allOrders.length} orders!</h2>
       <OrderUl>
         {allOrders.map((order) => (
-          <OrderItemStyles>
+          <OrderItemStyles key={order.id}>
             <Link href={`/order/${order.id}`}>
               <div>
                 <div className="order-meta">
