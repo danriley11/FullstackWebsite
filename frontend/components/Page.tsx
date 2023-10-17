@@ -1,6 +1,7 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import Header from './Header';
 import { black } from './styles/core/colours';
+import Footer from './PageStructure/Footer/Footer';
 
 type PageProps = {
   cool: string;
@@ -64,6 +65,7 @@ const Page = ({ cool, children }: PageProps) => {
       <GlobalStyles />
       <Header />
       <InnerStyles>{children}</InnerStyles>
+      <Footer />
     </div>
   );
 };
