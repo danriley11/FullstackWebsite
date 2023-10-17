@@ -30,7 +30,7 @@ const Cart = () => {
   const { cartOpen, closeCart } = useCart();
 
   if (!me) {
-    return <p>No cart details currently available...</p>;
+    return null;
   }
   return (
     <CartStyles open={cartOpen}>
