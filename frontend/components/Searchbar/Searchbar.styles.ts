@@ -1,5 +1,7 @@
 import styled, { keyframes } from 'styled-components';
+import { lightCoral } from '../styles/core/colours';
 
+// TODO: Update searchbar stylings
 const glow = keyframes`
   from {
     box-shadow: 0 0 0px yellow;
@@ -16,7 +18,7 @@ export const SearchStyles = styled.div`
   input {
     width: 100%;
     padding: 10px;
-    border: 0;
+    border: 1px solid ${lightCoral};
     font-size: 2rem;
 
     &.loading {
