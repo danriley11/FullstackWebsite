@@ -16,10 +16,10 @@ export const Item = styled.div`
   display: flex;
   flex-direction: column;
 
-  :hover {
+  &:hover {
     background: ${lightCoral};
     border-bottom: 1px solid ${darkCandySolid};
-    box-shadow: 0 0 16px ${darkCandy};
+    box-shadow: 0 0 24px ${darkCandy};
   }
 
   img {
@@ -27,6 +27,10 @@ export const Item = styled.div`
     height: 400px;
     object-fit: cover;
     border-radius: 24px;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   p {
@@ -75,6 +79,10 @@ export const PriceTag = styled.span`
   display: inline-block;
   position: absolute;
   right: 0;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const Title = styled.h3`

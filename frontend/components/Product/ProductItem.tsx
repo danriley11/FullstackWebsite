@@ -5,6 +5,8 @@ import { Item, PriceTag, Title } from './Products.styles';
 import DeleteProduct from '../DeleteProduct/DeleteProduct';
 import AddToCart from '../Cart/AddToCart';
 import useUser from '../../utils/useUser';
+import { ButtonLink } from '../styles/buttons/buttons';
+import { P } from '../styles/core/typography';
 
 type ProductProps = {
   product: Product;
@@ -17,12 +19,20 @@ const ProductItem = ({ product }: ProductProps) => {
 
   return (
     <Item>
-      <PriceTag>{FormatMoney(product.price)}</PriceTag>
-      <img src={product?.photo?.image?.publicUrlTransformed} alt={product.name} />
+      <Link href={`/product/${product.id}`}>
+        <PriceTag>{FormatMoney(product.price)}</PriceTag>
+      </Link>
+
+      <Link href={`/product/${product.id}`}>
+        <img src={product?.photo?.image?.publicUrlTransformed} alt={product.name} />
+      </Link>
+
       <Title>
-        <Link href={`/product/${product.id}`}>{product.name}</Link>
+        <ButtonLink href={`/product/${product.id}`}>{product.name}</ButtonLink>
       </Title>
-      <p>{product.description}</p>
+
+      <P>{product.description}</P>
+
       <div className="buttonList">
         {isAdmin && (
           <Link
