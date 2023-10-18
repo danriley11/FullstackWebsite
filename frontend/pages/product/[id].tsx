@@ -4,10 +4,18 @@ import { useQuery } from '@apollo/client';
 import SINGLE_ITEM_QUERY from '../../components/SingleProduct/SingleProduct.graphql';
 import DisplayError from '../../components/ErrorMessage';
 import Head from 'next/head';
-import { ProductStyles } from '../../components/SingleProduct/SingleProduct.styles';
+import { ProductDetails, ProductStyles } from '../../components/SingleProduct/SingleProduct.styles';
 import { Query } from '../../utils/globalTypes';
+import FormatMoney from '../../utils/formatMoney';
+import AddToCart from '../../components/Cart/AddToCart';
+import { useRouter } from 'next/router';
+import { Heading1, Heading2, Heading3, P } from '../../components/styles/core/typography';
+import { Fragment } from 'react';
 
 const SingleProductPage = ({ query }: Query) => {
+  const router = useRouter();
+  const productId = router.asPath.split('/').at(2);
+
   const { data, loading, error } = useQuery(SINGLE_ITEM_QUERY, {
     variables: {
       id: query.id,
@@ -29,11 +37,33 @@ const SingleProductPage = ({ query }: Query) => {
       </Head>
 
       <img src={Product.photo.image.publicUrlTransformed} alt={Product.photo.alt} />
-      <div>
-        <p>{Product.name}</p>
-        <p>{Product.price}</p>
-        <p>{Product.description}</p>
-      </div>
+
+      <ProductDetails>
+        <Fragment>
+          <Heading1>{Product.name}</Heading1>
+          <Heading2>{FormatMoney(Product.price)}</Heading2>
+          <AddToCart id={productId} />
+        </Fragment>
+
+        <Fragment>
+          <div>
+            <Heading3>Description</Heading3>
+            <P>{Product.description}.</P>
+          </div>
+          <div>
+            <Heading3>Material</Heading3>
+            <P>Information coming soon.</P>
+          </div>
+          <div>
+            <Heading3>Dimensions</Heading3>
+            <P>Information coming soon.</P>
+          </div>
+          <div>
+            <Heading3>Care instructions</Heading3>
+            <P>Information coming soon.</P>
+          </div>
+        </Fragment>
+      </ProductDetails>
     </ProductStyles>
   );
 };
