@@ -33,7 +33,7 @@ const OrdersPage = () => {
   return (
     <div>
       <Head>
-        <title>Bespoke designs | Orders</title>
+        <title>Bespoke Designs | Orders</title>
       </Head>
       <h2>You have {allOrders.length} orders!</h2>
 

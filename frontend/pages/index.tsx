@@ -4,6 +4,9 @@ import { ButtonLink } from '../components/styles/buttons/buttons';
 export default function IndexPage() {
   return (
     <>
+      <Head>
+        <title>Bespoke Designs | Home</title>
+      </Head>
       <header>
         <h1>Welcome to Bespoke Designs by Sharon!</h1>
       </header>

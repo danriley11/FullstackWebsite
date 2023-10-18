@@ -32,7 +32,7 @@ const SingleProductPage = ({ query }: Query) => {
     <ProductStyles>
       {/* Utilise NextJS component to update Tab text */}
       <Head>
-        <title>Bespoke designs | {Product.name}</title>
+        <title>Bespoke Designs | {Product.name}</title>
       </Head>
 
       <img src={Product.photo.image.publicUrlTransformed} alt={Product.photo.alt} />

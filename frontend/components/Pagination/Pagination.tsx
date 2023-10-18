@@ -20,7 +20,7 @@ const Pagination = ({ page }: PaginationProps) => {
     <PaginationStyles>
       <Head>
         <title>
-          Bespoke designs | Products [{page}/{pageCount}]
+          Bespoke Designs | Products [{page}/{pageCount}]
         </title>
       </Head>
 

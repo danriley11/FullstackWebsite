@@ -23,7 +23,7 @@ const SingleOrderPage = ({ query }: Query) => {
   if (error) return <ErrorMessage error={error} />;
   return (
     <OrderStyles>
-      <title>Bespoke designs by Sharon - {order.id}</title>
+      <title>Bespoke Designs by Sharon - {order.id}</title>
       <p>
         <span>Order ID:</span>
         <span>{order.id}</span>

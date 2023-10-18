@@ -5,7 +5,7 @@ export default function SellPage() {
   return (
     <div>
       <Head>
-        <title>Bespoke designs | Sell</title>
+        <title>Bespoke Designs | Sell</title>
       </Head>
       <VendProduct />
     </div>

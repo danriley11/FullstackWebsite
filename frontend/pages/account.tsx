@@ -13,7 +13,7 @@ export default function AccountPage() {
   return (
     <div>
       <Head>
-        <title>Bespoke designs | Account</title>
+        <title>Bespoke Designs | Account</title>
       </Head>
 
       <div>
