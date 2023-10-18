@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { darkCandySolid, lightCoral, lightCoralSolid } from '../styles/core/colours';
+import { darkCandy, darkCandySolid, lightCoral, lightCoralSolid } from '../styles/core/colours';
 
 export const ProductsList = styled.div`
   display: grid;
@@ -9,7 +9,7 @@ export const ProductsList = styled.div`
 
 export const Item = styled.div`
   background: white;
-  border: 1px solid var(--offWhite);
+  border: 1px solid grey;
   border-radius: 24px;
   box-shadow: var(--bs);
   position: relative;
@@ -19,6 +19,7 @@ export const Item = styled.div`
   :hover {
     background: ${lightCoral};
     border-bottom: 1px solid ${darkCandySolid};
+    box-shadow: 0 0 16px ${darkCandy};
   }
 
   img {
@@ -39,15 +40,25 @@ export const Item = styled.div`
   .buttonList {
     display: grid;
     width: 100%;
-    border-top: 1px solid var(--lightGray);
+    border-top: 1px solid lightGray;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     grid-gap: 1px;
-    background: var(--lightGray);
+
     & > * {
+      border-radius: 0 0 24px 24px;
       background: white;
       border: 0;
       font-size: 1rem;
       padding: 1rem;
+
+      &:hover {
+        background: ${lightCoral};
+        cursor: pointer;
+      }
+
+      &:active {
+        background: ${lightCoralSolid};
+      }
     }
   }
 `;
