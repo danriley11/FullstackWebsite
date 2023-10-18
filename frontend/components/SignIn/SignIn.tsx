@@ -28,11 +28,11 @@ const SignIn = () => {
     resetForm();
   }
 
-  // Redirect user to their account page on successful sign in
+  // Redirect user to the products page on successful sign in
   useEffect(() => {
     if (user) {
       router.push({
-        pathname: `/account`,
+        pathname: `/products`,
       });
       console.log('Logging in...');
     }
