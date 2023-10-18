@@ -7,6 +7,7 @@ import AddToCart from '../Cart/AddToCart';
 import useUser from '../../utils/useUser';
 import { ButtonLink } from '../styles/buttons/buttons';
 import { P } from '../styles/core/typography';
+import EditProduct from '../EditProduct/EditProduct';
 
 type ProductProps = {
   product: Product;
@@ -35,17 +36,7 @@ const ProductItem = ({ product }: ProductProps) => {
 
       {user && (
         <div className="buttonList">
-          {isAdmin && (
-            <Link
-              href={{
-                pathname: 'update',
-                query: {
-                  id: product.id,
-                },
-              }}>
-              Edit ✏️
-            </Link>
-          )}
+          {isAdmin && <EditProduct productId={product.id} />}
 
           {/* TODO: Inside account settings, add toggle for auto-popout of cart after successfully adding new product */}
           <AddToCart id={product.id} />
