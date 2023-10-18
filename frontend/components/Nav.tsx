@@ -9,10 +9,9 @@ import { useQuery } from '@apollo/client';
 const Nav = () => {
   const user = useUser();
   const { openCart } = useCart();
-  const { data } = useQuery(CURRENT_USER_QUERY);
 
   // TODO: Enhance this to check .env key instead of undefined
-  const isAdmin = data?.authenticatedItem?.role?.id !== undefined;
+  const isAdmin = user?.role?.id !== undefined;
 
   return (
     <StyledNav>
