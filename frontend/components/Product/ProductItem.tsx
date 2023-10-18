@@ -33,28 +33,30 @@ const ProductItem = ({ product }: ProductProps) => {
 
       <P>{product.description}</P>
 
-      <div className="buttonList">
-        {isAdmin && (
-          <Link
-            href={{
-              pathname: 'update',
-              query: {
-                id: product.id,
-              },
-            }}>
-            Edit ✏️
-          </Link>
-        )}
+      {user && (
+        <div className="buttonList">
+          {isAdmin && (
+            <Link
+              href={{
+                pathname: 'update',
+                query: {
+                  id: product.id,
+                },
+              }}>
+              Edit ✏️
+            </Link>
+          )}
 
-        {/* TODO: Inside account settings, add toggle for auto-popout of cart after successfully adding new product */}
-        <AddToCart id={product.id} />
+          {/* TODO: Inside account settings, add toggle for auto-popout of cart after successfully adding new product */}
+          <AddToCart id={product.id} />
 
-        {isAdmin && (
-          <DeleteProduct id={product.id} productName={product.name}>
-            Delete ❌
-          </DeleteProduct>
-        )}
-      </div>
+          {isAdmin && (
+            <DeleteProduct id={product.id} productName={product.name}>
+              Delete ❌
+            </DeleteProduct>
+          )}
+        </div>
+      )}
     </Item>
   );
 };
