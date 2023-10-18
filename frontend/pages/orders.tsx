@@ -6,8 +6,6 @@ import { OrderItemStyles, OrderUl } from './order/order.styles';
 import Link from 'next/link';
 import FormatMoney from '../utils/formatMoney';
 import useUser from '../utils/useUser';
-import { useEffect } from 'react';
-import { useRouter } from 'next/router';
 import { IsLoggedOut } from '../utils/isLoggedOut';
 
 const OrdersPage = () => {
@@ -34,18 +32,22 @@ const OrdersPage = () => {
   return (
     <div>
       <h2>You have {allOrders.length} orders!</h2>
+
       <OrderUl>
         {allOrders.map((order) => (
-          <OrderItemStyles key={order.id}>
-            <Link href={`/order/${order.id}`}>
+          <Link href={`/order/${order.id}`}>
+            <OrderItemStyles key={order.id}>
               <div>
                 <div className="order-meta">
-                  <p>{countItemsInAnOrder(order)} items</p>
-                  {/* TODO: create util for determining if plural or singular */}
+                  <p>
+                    {countItemsInAnOrder(order)} Item{countItemsInAnOrder(order) === 1 ? '' : 's'}
+                  </p>
+
                   <p>
                     {order.items.length} Product{order.items.length === 1 ? '' : 's'}
                   </p>
-                  <p>{FormatMoney(order.total)}</p>
+
+                  <p>Total: {FormatMoney(order.total)}</p>
                 </div>
                 <div className="images">
                   {order.items.map((item) => (
@@ -53,8 +55,8 @@ const OrdersPage = () => {
                   ))}
                 </div>
               </div>
-            </Link>
-          </OrderItemStyles>
+            </OrderItemStyles>
+          </Link>
         ))}
       </OrderUl>
     </div>
