@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { IsLoggedOut } from '../utils/isLoggedOut';
 
 export default function AccountPage() {
@@ -5,6 +6,9 @@ export default function AccountPage() {
 
   return (
     <div>
+      <Head>
+        <title>Bespoke designs | Account</title>
+      </Head>
       <p>Hello world!</p>
       {/* TODO:
         Checkbox settings list:

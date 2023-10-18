@@ -7,6 +7,7 @@ import Link from 'next/link';
 import FormatMoney from '../utils/formatMoney';
 import useUser from '../utils/useUser';
 import { IsLoggedOut } from '../utils/isLoggedOut';
+import Head from 'next/head';
 
 const OrdersPage = () => {
   const user = useUser();
@@ -31,6 +32,9 @@ const OrdersPage = () => {
   if (error) return <ErrorMessage error={error} />;
   return (
     <div>
+      <Head>
+        <title>Bespoke designs | Orders</title>
+      </Head>
       <h2>You have {allOrders.length} orders!</h2>
 
       <OrderUl>
