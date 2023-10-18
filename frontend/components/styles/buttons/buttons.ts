@@ -10,19 +10,16 @@ type ButtonLinkProps = {
 export const ButtonLink = styled.a<ButtonLinkProps>`
   color: ${darkCandySolid};
   background-color: ${lightCoralSolid};
-
-  border: 1px solid ${darkCandySolid};
   border-radius: ${rem(24)};
-
   padding: ${rem(12)};
-
   font-size: ${fontSize16};
   font-family: ${fontFamily};
   font-weight: ${({ fontWeight = fontWeightSemiBold }) => fontWeight};
 
   &:hover {
+    cursor: pointer;
     color: ${white};
-    background-color: ${darkCandySolid};
+    background: ${darkCandySolid};
   }
 
   ${({ disabled = false }) =>
