@@ -6,6 +6,7 @@ import '../components/styles/givenStyles/nprogress.css';
 import { ApolloProvider } from '@apollo/client';
 import withData from '../utils/withData';
 import { CartStateProvider } from '../utils/cartState';
+import Head from 'next/head';
 
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
@@ -20,6 +21,9 @@ const MyApp = ({ Component, pageProps, apollo }: MyAppProps) => {
     <ApolloProvider client={apollo}>
       <CartStateProvider>
         <Page>
+          <Head>
+            <link rel="icon" href="/icon.png" />
+          </Head>
           <Component {...pageProps} />
         </Page>
       </CartStateProvider>
