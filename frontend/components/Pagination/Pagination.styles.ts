@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { lightCoral } from '../styles/core/colours';
+import { lightCoral, lightCoralSolid } from '../styles/core/colours';
 
 const PaginationStyles = styled.div`
   text-align: center;
@@ -25,6 +25,10 @@ const PaginationStyles = styled.div`
         border-radius: 0 10px 10px 0;
         text-decoration: none;
       }
+
+      &:active {
+        background: ${lightCoralSolid};
+      }
     }
 
     &:first-child {
@@ -32,6 +36,10 @@ const PaginationStyles = styled.div`
         background: ${lightCoral};
         border-radius: 10px 0 0 10px;
         text-decoration: none;
+      }
+
+      &:active {
+        background: ${lightCoralSolid};
       }
     }
   }
