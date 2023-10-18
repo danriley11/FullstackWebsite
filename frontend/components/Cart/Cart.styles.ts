@@ -44,7 +44,8 @@ const CartStyles = styled.div`
     margin: 0;
     padding: 0;
     list-style: none;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: none;
   }
 
   button {
@@ -59,19 +60,24 @@ const CartStyles = styled.div`
 `;
 
 export const CartItemStyles = styled.li`
-  padding: 1rem, 0;
+  padding: 1rem;
   border-bottom: 1px solid lightgrey;
+
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: 1fr 2fr 2fr;
+  column-gap: 1rem;
 
   img {
     margin-right: 1rem;
     width: 100px;
+    height: 100px;
   }
 
-  h3,
-  p {
+  h1 {
     margin: 0;
+  }
+  p {
+    margin: 12px 0;
   }
 `;
 
