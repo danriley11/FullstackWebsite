@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { darkCandy, darkCandySolid, lightCoral, lightCoralSolid } from '../styles/core/colours';
+import { darkCandy, lightCoral, lightCoralSolid, lightGrey } from '../styles/core/colours';
 
 export const ProductsList = styled.div`
   display: grid;
@@ -9,7 +9,7 @@ export const ProductsList = styled.div`
 
 export const Item = styled.div`
   background: white;
-  border: 1px solid grey;
+  border: 1px solid ${lightGrey};
   border-radius: 24px;
   box-shadow: var(--bs);
   position: relative;
@@ -18,7 +18,6 @@ export const Item = styled.div`
 
   &:hover {
     background: ${lightCoral};
-    border-bottom: 1px solid ${darkCandySolid};
     box-shadow: 0 0 24px ${darkCandy};
   }
 
@@ -44,7 +43,7 @@ export const Item = styled.div`
   .buttonList {
     display: grid;
     width: 100%;
-    border-top: 1px solid lightGray;
+    border-top: 1px solid ${lightGrey};
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     grid-gap: 1px;
 

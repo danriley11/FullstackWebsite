@@ -15,7 +15,6 @@ import { Fragment } from 'react';
 const SingleProductPage = ({ query }: Query) => {
   const router = useRouter();
   const productId = router.asPath.split('/').at(2);
-
   const { data, loading, error } = useQuery(SINGLE_ITEM_QUERY, {
     variables: {
       id: query.id,
