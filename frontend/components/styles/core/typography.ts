@@ -73,6 +73,6 @@ export const P = styled.p`
   font-size: ${fontSize24};
   font-family: ${fontFamily};
   font-weight: ${weights.regular};
-  line-height: ${fontSize24};
+  line-height: ${fontSize24LineHeight};
   max-width: fit-content;
 `;
