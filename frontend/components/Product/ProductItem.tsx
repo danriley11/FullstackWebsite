@@ -4,37 +4,50 @@ import FormatMoney from '../../utils/formatMoney';
 import { Item, PriceTag, Title } from './Products.styles';
 import DeleteProduct from '../DeleteProduct/DeleteProduct';
 import AddToCart from '../Cart/AddToCart';
+import useUser from '../../utils/useUser';
+import { ButtonLink } from '../styles/buttons/buttons';
+import { P } from '../styles/core/typography';
+import EditProduct from '../EditProduct/EditProduct';
 
 type ProductProps = {
   product: Product;
 };
 const ProductItem = ({ product }: ProductProps) => {
+  const user = useUser();
+
+  // TODO: Enhance this to check .env key instead of undefined
+  const isAdmin = user?.role?.id !== undefined;
+
   return (
     <Item>
-      <PriceTag>{FormatMoney(product.price)}</PriceTag>
-      <img src={product?.photo?.image?.publicUrlTransformed} alt={product.name} />
+      <Link href={`/product/${product.id}`}>
+        <PriceTag>{FormatMoney(product.price)}</PriceTag>
+      </Link>
+
+      <Link href={`/product/${product.id}`}>
+        <img src={product?.photo?.image?.publicUrlTransformed} alt={product.name} />
+      </Link>
+
       <Title>
-        <Link href={`/product/${product.id}`}>{product.name}</Link>
+        <ButtonLink href={`/product/${product.id}`}>{product.name}</ButtonLink>
       </Title>
-      <p>{product.description}</p>
-      <div className="buttonList">
-        <Link
-          href={{
-            pathname: 'update',
-            query: {
-              id: product.id,
-            },
-          }}>
-          Edit ✏️
-        </Link>
 
-        {/* TODO: Inside account settings, add toggle for auto-popout of cart after successfully adding new product */}
-        <AddToCart id={product.id} />
+      <P>{product.description}</P>
 
-        <DeleteProduct id={product.id} productName={product.name}>
-          Delete ❌
-        </DeleteProduct>
-      </div>
+      {user && (
+        <div className="buttonList">
+          {isAdmin && <EditProduct productId={product.id} />}
+
+          {/* TODO: Inside account settings, add toggle for auto-popout of cart after successfully adding new product */}
+          <AddToCart id={product.id} />
+
+          {isAdmin && (
+            <DeleteProduct id={product.id} productName={product.name}>
+              Delete ❌
+            </DeleteProduct>
+          )}
+        </div>
+      )}
     </Item>
   );
 };

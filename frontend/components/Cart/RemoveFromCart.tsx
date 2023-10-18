@@ -3,7 +3,7 @@ import { REMOVE_ALL_FROM_CART_MUTATION, REMOVE_ALL_OF_ITEM_MUTATION } from './Re
 import DisplayError from '../ErrorMessage';
 import { CURRENT_USER_QUERY } from '../../utils/useUser';
 
-const RemoveFromCart = ({ cartItem, allCartItems }) => {
+const RemoveFromCart = ({ cartItem }) => {
   const [
     removeAllOfItem,
     { data: removeAllOfItemData, loading: removeAllOfItemLoading, error: removeAllOfItemError },
@@ -12,27 +12,13 @@ const RemoveFromCart = ({ cartItem, allCartItems }) => {
     refetchQueries: [{ query: CURRENT_USER_QUERY }],
   });
 
-  let ids = [];
-  const [
-    removeAllItemsFromCart,
-    { data: removeAllItemsData, loading: removeAllItemsLoading, error: removeAllItemsError },
-  ] = useMutation(REMOVE_ALL_FROM_CART_MUTATION, {
-    variables: {
-      ids,
-      refetchQueries: [{ query: CURRENT_USER_QUERY }],
-    },
-  });
-
   // Handle error
   if (removeAllOfItemError) {
     return <DisplayError error={removeAllOfItemError} />;
   }
-  if (removeAllItemsError) {
-    return <DisplayError error={removeAllItemsError} />;
-  }
 
   return (
-    <div>
+    <div style={{ display: 'flex', justifySelf: 'flex-end' }}>
       {/* Increment 1 of the item */}
       <button
         type="button"
@@ -42,17 +28,6 @@ const RemoveFromCart = ({ cartItem, allCartItems }) => {
           // true ? confirm() : increase()
         }}>
         +
-      </button>
-
-      {/* Remove 1 of the item */}
-      <button
-        type="button"
-        disabled={true}
-        onClick={() => {
-          // check if last item
-          // true ? confirm() : reduce()
-        }}>
-        -
       </button>
 
       {/* TODO: Remove all of the 1 item */}
@@ -68,21 +43,15 @@ const RemoveFromCart = ({ cartItem, allCartItems }) => {
         Remove item
       </button>
 
-      {/* TODO: Remove all items from cart */}
+      {/* Remove 1 of the item */}
       <button
         type="button"
-        // TODO: Query is correct but function is not
-        disabled={true || removeAllItemsLoading}
+        disabled={true}
         onClick={() => {
-          if (confirm(`Are you sure you want to clear your cart?`)) {
-            console.log(`Clearing cart...`);
-            // ids = allCartItems.map((cartItem) => cartItem.id);
-            const ids = allCartItems.map((cartItem) => `"${cartItem.id}"`);
-            console.log(ids);
-            removeAllItemsFromCart();
-          }
+          // check if last item
+          // true ? confirm() : reduce()
         }}>
-        Clear cart
+        -
       </button>
     </div>
   );

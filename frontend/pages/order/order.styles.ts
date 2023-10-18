@@ -1,17 +1,18 @@
 import styled from 'styled-components';
+import { darkCandySolid, lightCoral } from '../../components/styles/core/colours';
 
-const OrderStyles = styled.div`
+export const OrderStyles = styled.div`
   max-width: 1000px;
   margin: 0 auto;
-  border: 1px solid whitesmoke;
   box-shadow: var(--bs);
   padding: 2rem;
-  border-top: 10px solid red;
+  border: 10px solid ${lightCoral};
+
   & > p {
     display: grid;
     grid-template-columns: 1fr 5fr;
     margin: 0;
-    border-bottom: 1px solid whitesmoke;
+    border-bottom: 1px solid ${lightCoral};
     span {
       padding: 1rem;
       &:first-child {
@@ -21,7 +22,7 @@ const OrderStyles = styled.div`
     }
   }
   .order-item {
-    border-bottom: 1px solid whitesmoke;
+    border-bottom: 1px solid ${lightCoral};
     display: grid;
     grid-template-columns: 300px 1fr;
     align-items: center;
@@ -46,7 +47,14 @@ export const OrderItemStyles = styled.li`
   box-shadow: var(--bs);
   list-style: none;
   padding: 2rem;
-  border: 1px solid whitesmoke;
+  /* border: 1px solid whitesmoke; */
+  border: 10px solid ${lightCoral};
+  border-radius: 24px;
+
+  &:hover {
+    cursor: pointer;
+    background: ${lightCoral};
+  }
 
   h2 {
     border-bottom: 2px solid red;
@@ -65,6 +73,7 @@ export const OrderItemStyles = styled.li`
       height: 200px;
       object-fit: cover;
       width: 100%;
+      border-radius: 24px;
     }
   }
 
@@ -77,8 +86,9 @@ export const OrderItemStyles = styled.li`
 
     & > * {
       margin: 0;
-      background: rgba(0, 0, 0, 0.03);
+      background: ${lightCoral};
       padding: 1rem 0;
+      border-radius: 24px;
     }
 
     strong {
@@ -87,5 +97,3 @@ export const OrderItemStyles = styled.li`
     }
   }
 `;
-
-export default OrderStyles;

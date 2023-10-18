@@ -12,7 +12,7 @@ const VendProduct = () => {
   const { inputs, handleChange, resetForm, clearForm } = useForm<VendProductInputs>({
     image: '',
     name: '',
-    price: 0,
+    price: null,
     description: '',
   });
 

@@ -2,10 +2,9 @@ import { useQuery } from '@apollo/client';
 import { SINGLE_ORDER_QUERY } from './order.graphql';
 import DisplayError from '../../components/ErrorMessage';
 import ErrorMessage from '../../components/ErrorMessage';
-import OrderStyles from './order.styles';
+import { OrderStyles } from './order.styles';
 import FormatMoney from '../../utils/formatMoney';
 import { Query } from '../../utils/globalTypes';
-import useUser from '../../utils/useUser';
 import { IsLoggedOut } from '../../utils/isLoggedOut';
 
 const SingleOrderPage = ({ query }: Query) => {
@@ -24,7 +23,7 @@ const SingleOrderPage = ({ query }: Query) => {
   if (error) return <ErrorMessage error={error} />;
   return (
     <OrderStyles>
-      <title>Bespoke designs by Sharon - {order.id}</title>
+      <title>Bespoke Designs by Sharon - {order.id}</title>
       <p>
         <span>Order ID:</span>
         <span>{order.id}</span>

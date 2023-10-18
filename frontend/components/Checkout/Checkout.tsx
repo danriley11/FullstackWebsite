@@ -23,11 +23,6 @@ const CheckoutForm = () => {
     refetchQueries: [{ query: CURRENT_USER_QUERY }],
   });
 
-  // router.push({
-  //   pathname: '/order/[id]',
-  //   query: { id: order.data.checkout.id },
-  // });
-
   //   1. Stop form from submitting and activate loader
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -62,8 +57,6 @@ const CheckoutForm = () => {
     // 6. Change the page to view the order
     router.push({
       pathname: `/order/${order.data.checkout.id}`,
-      // pathname: '/order',
-      // query: { id: order.data.checkout.id },
     });
 
     // 7. close the cart

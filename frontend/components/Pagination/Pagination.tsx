@@ -5,22 +5,30 @@ import { useQuery } from '@apollo/client';
 import { PAGINATION_QUERY } from './Pagination.graphql';
 import DisplayError from '../ErrorMessage';
 import { perPage } from '../../config';
+import { useRouter } from 'next/router';
+import { P } from '../styles/core/typography';
 
 type PaginationProps = {
   page: number;
 };
 const Pagination = ({ page }: PaginationProps) => {
+  const router = useRouter();
   const { data, loading, error } = useQuery(PAGINATION_QUERY);
   const count = data?._allProductsMeta?.count;
   const pageCount = Math.ceil(count / perPage);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <DisplayError error={error} />;
+  if (page > pageCount) {
+    router.push({
+      pathname: `/products/${pageCount}`,
+    });
+  }
   return (
     <PaginationStyles>
       <Head>
         <title>
-          Bespoke designs | Products [{page}/{pageCount}]
+          Bespoke Designs | Products [{page}/{pageCount}]
         </title>
       </Head>
 
