@@ -70,7 +70,7 @@ export const Heading4 = styled.h4`
 `;
 
 export const P = styled.p`
-  font-size: ${fontSize20};
+  font-size: ${fontSize24};
   font-family: ${fontFamily};
   font-weight: ${weights.regular};
   line-height: ${fontSize24};
