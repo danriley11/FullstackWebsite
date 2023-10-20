@@ -1,7 +1,7 @@
 {
   "version": 2,
   "builds": [
-    { "src": "frontend/**/*", "use": "@vercel/node", "framework": "nextjs" },
-    { "src": "backend/**/*", "use": "@vercel/node", "framework": "nodejs" }
+    { "src": "frontend/**/*", "use": "@vercel/node", "config": { "framework": "nextjs" } },
+    { "src": "backend/**/*", "use": "@vercel/node" }
   ]
 }
