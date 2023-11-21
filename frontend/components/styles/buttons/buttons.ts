@@ -22,6 +22,10 @@ export const ButtonLink = styled.a<ButtonLinkProps>`
     background: ${darkCandySolid};
   }
 
+  &:active {
+    background: ${darkCandySolid};
+  }
+
   ${({ disabled = false }) =>
     disabled &&
     css`
