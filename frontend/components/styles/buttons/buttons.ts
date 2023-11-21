@@ -19,9 +19,6 @@ export const ButtonLink = styled.a<ButtonLinkProps>`
   &:hover {
     cursor: pointer;
     color: ${white};
-  }
-
-  &:active {
     background: ${darkCandySolid};
   }
 
